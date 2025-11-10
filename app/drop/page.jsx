@@ -1,8 +1,8 @@
-ï»¿import Link from "next/link";
+import Link from "next/link";
 import { products } from "../lib/products";
 
 export const metadata = {
-  title: "Drop #1 â€” InTheShoesOf",
+  title: "Drop #1 — InTheShoesOf",
   description: "Limited run of statement socks.",
 };
 
@@ -13,8 +13,8 @@ export default function Drop() {
   return (
     <main className="max-w-5xl mx-auto p-8 space-y-10">
       <header className="text-center space-y-2">
-        <h1 className="text-4xl font-bold">Drop #1 â€” Statement Socks</h1>
-        <p className="opacity-80">Limited run. Ships in 7â€“10 days.</p>
+        <h1 className="text-4xl font-bold">Drop #1 — Statement Socks</h1>
+        <p className="opacity-80">Limited run. Ships in 7–10 days.</p>
         <p className="text-sm">Remaining: <b>{left}</b> / {cap}</p>
       </header>
 
