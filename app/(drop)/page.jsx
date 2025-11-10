@@ -1,23 +1,20 @@
-export const dynamic = "force-dynamic";
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { products } from "@/app/lib/products";
+﻿import Link from "next/link";
+import { products } from "../lib/products";
+
+export const metadata = {
+  title: "Drop #1 — InTheShoesOf",
+  description: "Limited run of statement socks.",
+};
 
 export default function Drop() {
-  const cap = 150;
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const saved = Number(sessionStorage.getItem("mockCount") ?? Math.floor(Math.random() * 25));
-    setCount(saved);
-  }, []);
-  const left = Math.max(cap - count, 0);
+  const cap = Number(process.env.NEXT_PUBLIC_DROP_CAP ?? 150);
+  const left = cap; // server render (no client counter for now)
 
   return (
     <main className="max-w-5xl mx-auto p-8 space-y-10">
       <header className="text-center space-y-2">
-        <h1 className="text-4xl font-bold">Drop #1 � Statement Socks</h1>
-        <p className="opacity-80">Limited run. Ships in 7�10 days.</p>
+        <h1 className="text-4xl font-bold">Drop #1 — Statement Socks</h1>
+        <p className="opacity-80">Limited run. Ships in 7–10 days.</p>
         <p className="text-sm">Remaining: <b>{left}</b> / {cap}</p>
       </header>
 
@@ -42,4 +39,3 @@ export default function Drop() {
     </main>
   );
 }
-
