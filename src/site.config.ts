@@ -28,6 +28,29 @@ export const site = {
     { label: "Instagram", href: "#" },
     { label: "TikTok", href: "#" },
   ],
+
+  // ---- Added: centralize the paths we’ll use
+  routes: {
+    home: "/",
+    drop: "/drop",
+    haileSelassie: "/haile-selassie",
+    qrH1: "/h1", // QR short path -> redirect to haile-selassie in next.config.js
+    
+  },
+
+  // ---- Added: minimal product meta for the Haile Selassie pages
+  products: {
+    haileSelassie: {
+      slug: "haile-selassie",
+      title: "HAILE SELASSIE — In The Shoes Of",
+      subtitle: "The King who kept Ethiopia free",
+      heroImage: "/heroes/haile-selassie/hero.jpg", // fallback to front.png if missing
+    },
+  },
 } as const;
+
+// Optional helper to build WhatsApp links with prefilled text
+export const waHref = (text?: string) =>
+  `https://wa.me/${site.contact.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
 export type SiteConfig = typeof site;
