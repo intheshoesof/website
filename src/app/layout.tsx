@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL("https://intheshoesof.vercel.app"),
+  metadataBase: new URL("https://intheshoesof.com"),
   title: "In The Shoes Of — Statement Socks",
   description: "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
   
@@ -25,11 +25,11 @@ export const metadata = {
  openGraph: {
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    url: "https://intheshoesof.vercel.app",
+    url: "https://intheshoesof.com",
     siteName: "In The Shoes Of",
     images: [
       {
-        url: "https://intheshoesof.vercel.app/favicon/web-app-manifest-512x512.png",
+        url: "https://intheshoesof.com/favicon/web-app-manifest-512x512.png",
         width: 512,
         height: 512,
         alt: "In The Shoes Of — Statement Socks",
@@ -41,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    images: ["https://intheshoesof.vercel.app/favicon/web-app-manifest-192x192.png"],
+    images: ["https://intheshoesof.com/favicon/web-app-manifest-192x192.png"],
   },
 
 };
