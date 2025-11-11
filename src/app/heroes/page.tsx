@@ -19,8 +19,8 @@ const HEROES: HeroCard[] = [
     slug: "haile-selassie",
     title: "HAILE SELASSIE",
     subtitle: "The King who kept Ethiopia free",
-    heroImage: "/products/haile-selassie/hero.png", // fallback handled in <Image>
-    heroHref: site.routes?.heroes ?? "/haile-selassie",
+    heroImage: "/heroes/haile-selassie/hero.jpg", // fallback handled in <Image>
+    heroHref: site.routes?.haileSelassie  ?? "/haile-selassie",
     productHref: site.routes?.drop ?? "/drop",
   },
 ];
@@ -43,7 +43,7 @@ export default function HeroesPage() {
           <nav className="flex gap-6 text-sm font-medium">
             <Link href={site.routes?.home ?? "/"} className="hover:text-gray-900 text-gray-600">Home</Link>
             <Link href={site.routes?.drop ?? "/drop"} className="hover:text-gray-900 text-gray-600">Drop</Link>
-            <Link href={site.routes?.heroes ?? "/heroes"} className="text-black font-semibold">Heroes</Link>
+            <Link href={site.routes?.haileSelassie ?? "/heroes"} className="text-black font-semibold">Heroes</Link>
           </nav>
         </div>
       </header>

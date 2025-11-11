@@ -33,7 +33,7 @@ export const site = {
   routes: {
     home: "/",
     drop: "/drop",
-    heroes: "/haile-selassie",
+    haileSelassie : "/heroes/haile-selassie",
     qrH1: "/h1", // QR short path -> redirect to haile-selassie in next.config.js
     
   },
