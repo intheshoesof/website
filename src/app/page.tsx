@@ -10,7 +10,7 @@ export default function HomePage() {
         {/* LOGO */}
         <div className="mb-8">
           <Image
-            src="/favicon/web-app-manifest-512x512.png?v=2"
+            src="/favicon/web-app-manifest-512x512.png?v=3"
             alt={site.brand}
             width={280}
             height={280}
