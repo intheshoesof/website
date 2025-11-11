@@ -10,13 +10,15 @@ export default function HomePage() {
         {/* LOGO */}
         <div className="mb-8">
           <Image
-            src="/favicon/web-app-manifest-512x512.png" // your actual ITSO logo
+            src="/favicon/web-app-manifest-512x512.png"
             alt={site.brand}
-            width={140}
-            height={140}
+            width={280}
+            height={280}
             priority
             className="opacity-90"
+            style={{ maxWidth: "100%", height: "auto" }}
           />
+
         </div>
 
         {/* BRAND TITLE */}
