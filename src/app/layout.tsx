@@ -22,20 +22,28 @@ export const metadata = {
     apple: "/favicon/apple-touch-icon.png",
     other: [{ rel: "manifest", url: "/favicon/site.webmanifest" }],
   },
-  openGraph: {
+ openGraph: {
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    url: "/",
+    url: "https://intheshoesof.vercel.app",
     siteName: "In The Shoes Of",
-    images: [{ url: "/favicon/web-app-manifest-512x512.png", width: 512, height: 512 }],
+    images: [
+      {
+        url: "https://intheshoesof.vercel.app/favicon/web-app-manifest-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "In The Shoes Of — Statement Socks",
+      },
+    ],
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    images: ["/favicon/web-app-manifest-192x192.png"],
+    images: ["https://intheshoesof.vercel.app/favicon/web-app-manifest-192x192.png"],
   },
+
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
