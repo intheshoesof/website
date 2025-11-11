@@ -8,9 +8,8 @@ export const metadata = {
   themeColor: "#000000",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },          // root for widest support
-      { url: "/favicon.ico", sizes: "any" },                    // root fallback
-      { url: "/favicon/favicon-96x96.png", sizes: "96x96" },    // explicit PNG
+      { url: "/favicon.svg", type: "image/svg+xml" }, // preferred
+      { url: "/favicon.ico", sizes: "any" }           // fallback
     ],
     apple: "/favicon/apple-touch-icon.png",
     other: [{ rel: "manifest", url: "/favicon/site.webmanifest" }],
