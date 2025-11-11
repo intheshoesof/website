@@ -10,13 +10,13 @@ export default function HomePage() {
         {/* LOGO */}
         <div className="mb-8">
           <Image
-            src="/favicon/web-app-manifest-512x512.png"
+            src="/favicon/web-app-manifest-512x512.png?v=2"
             alt={site.brand}
             width={280}
             height={280}
             priority
-            className="opacity-90"
-            style={{ maxWidth: "100%", height: "auto" }}
+            unoptimized   // <- bypass optimizer; avoids transient disappearances
+            style={{ display: "block", margin: "0 auto", maxWidth: "100%", height: "auto", opacity: 0.9 }}
           />
 
         </div>
