@@ -20,7 +20,7 @@ const HEROES: HeroCard[] = [
     title: "HAILE SELASSIE",
     subtitle: "The King who kept Ethiopia free",
     heroImage: "/products/haile-selassie/hero.png", // fallback handled in <Image>
-    heroHref: site.routes?.haileSelassie ?? "/haile-selassie",
+    heroHref: site.routes?.heroes ?? "/haile-selassie",
     productHref: site.routes?.drop ?? "/drop",
   },
 ];
