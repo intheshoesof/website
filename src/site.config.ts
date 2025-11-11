@@ -1,40 +1,32 @@
-// /site.config.ts
 export const site = {
-  brand: "House of Zenfit",
-  baseUrl: "https://houseofzenfit.co.ke",
+  brand: "In The Shoes Of",
+  baseUrl: "https://intheshoesof.vercel.app",
 
-  metaTitle: "House of Zenfit — Train Hard. Breathe Deep. Live Zen.",
+  metaTitle: "In The Shoes Of — Statement Socks",
   metaDescription:
-    "Elite personal training and small-group classes in Nairobi. Strength, conditioning, mobility, and the ZenStrength fusion of weights + breathwork.",
+    "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
 
-  address: "Nairobi, Kenya",
+  address: "Limassol, Cyprus",
 
   contact: {
-    // E.164 (no +) for wa.me links
-    whatsapp: "254700020642",
-    // Display format for tel: and UI
-    phone: "+254 700 020 642",
-    // Use branded inbox; you can swap to the Gmail if needed
-    email: "hello@houseofzenfit.co.ke",
+    // WhatsApp E.164 without plus
+    whatsapp: "35799021195",
+    // Display format for tel:/UI
+    phone: "+357 99 021195",
+    email: "hello@intheshoesof.com",
   },
 
   socials: {
-    facebook: "https://www.facebook.com/houseofzenfit",
-    instagram: "https://instagram.com/houseofzenfit",
-    tiktok: "https://www.tiktok.com/@houseofzenfit",
-    x: "https://x.com/houseofzenfit",
-    googleBusiness: "#", // add Maps/Business Profile URL when live
+    instagram: "#",
+    tiktok: "#",
+    facebook: "#",
+    x: "#",
   },
 
-  // Optional: used by any bio/links component if present in your template
   bioLinks: [
-    { label: "Chat on WhatsApp", href: "https://wa.me/254700206642", emphasis: true },
-    { label: "houseofzenfit.co.ke", href: "https://houseofzenfit.co.ke" },
-    { label: "Instagram", href: "https://instagram.com/houseofzenfit" },
-    { name: "Facebook", href: "https://www.facebook.com/houseofzenfit" },
-    { label: "TikTok", href: "https://www.tiktok.com/@houseofzenfit" },
-    { label: "X (Twitter)", href: "https://x.com/houseofzenfit" },
-     { name: "Google Business", href: "https://g.page/r/CZhouseofzenfit" },
+    { label: "Chat on WhatsApp", href: "https://wa.me/35799021195", emphasis: true },
+    { label: "Instagram", href: "#" },
+    { label: "TikTok", href: "#" },
   ],
 } as const;
 
