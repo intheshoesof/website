@@ -1,11 +1,19 @@
-﻿﻿import "./globals.css";
+﻿﻿import { Viewport } from "next";
+import "./globals.css";
 import type { ReactNode } from "react";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
+};
 
 export const metadata = {
   metadataBase: new URL("https://intheshoesof.vercel.app"),
   title: "In The Shoes Of — Statement Socks",
   description: "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
-  themeColor: "#000000",
+  
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" }, // preferred
