@@ -23,19 +23,14 @@ export const metadata = {
     other: [{ rel: "manifest", url: "/favicon/site.webmanifest" }],
   },
  openGraph: {
-    title: "In The Shoes Of — Statement Socks",
-    description: "Limited drops. Small batch. Big voice.",
-    url: "https://intheshoesof.com",
-    siteName: "In The Shoes Of",
     images: [
       {
-        url: "https://intheshoesof.com/favicon/web-app-manifest-512x512.png",
-        width: 512,
-        height: 512,
+        url: "https://intheshoesof.com/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: "In The Shoes Of — Statement Socks",
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
