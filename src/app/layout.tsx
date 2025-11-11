@@ -36,7 +36,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    images: ["https://intheshoesof.com/favicon/web-app-manifest-192x192.png"],
+    images: ["https://intheshoesof.com/og-image.jpg"],
   },
 
 };
