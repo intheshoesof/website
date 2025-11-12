@@ -30,7 +30,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
-    images: ["https://intheshoesof.com/og-image.jpg"],
+    images: ["/opengraph-image.jpg"],
   },
  other: {
     "fb:app_id": "61582166974655", // or use: "fb:admins": "YOUR_NUMERIC_FB_ID"
