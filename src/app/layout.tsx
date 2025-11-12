@@ -13,7 +13,11 @@ export const metadata = {
   metadataBase: new URL("https://intheshoesof.com"),
   title: "In The Shoes Of — Statement Socks",
   description: "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
-  
+  penGraph: {
+    url: "https://www.intheshoesof.com", // ← og:url
+    type: "website",                      // ← og:type
+    siteName: "In The Shoes Of",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" }, // preferred
@@ -27,6 +31,9 @@ export const metadata = {
     title: "In The Shoes Of — Statement Socks",
     description: "Limited drops. Small batch. Big voice.",
     images: ["https://intheshoesof.com/og-image.jpg"],
+  },
+ other: {
+    "fb:app_id": "61582166974655", // or use: "fb:admins": "YOUR_NUMERIC_FB_ID"
   },
 
 };
