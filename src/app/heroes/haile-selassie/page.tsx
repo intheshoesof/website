@@ -62,7 +62,7 @@ export default function HaileSelassieHeroPage() {
 
         <div>
           <div className="aspect-[4/5] relative w-full overflow-hidden rounded-2xl border">
-            <img
+            <Image
               src={hero.heroImage || "haile-selassie.jpg"}
               alt="Haile Selassie hero"
               

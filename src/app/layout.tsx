@@ -13,7 +13,7 @@ export const metadata = {
   metadataBase: new URL("https://intheshoesof.com"),
   title: "In The Shoes Of — Statement Socks",
   description: "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
-  penGraph: {
+  openGraph: {
     url: "https://www.intheshoesof.com", // ← og:url
     type: "website",                      // ← og:type
     siteName: "In The Shoes Of",
