@@ -22,16 +22,6 @@ export const metadata = {
     apple: "/favicon/apple-touch-icon.png",
     other: [{ rel: "manifest", url: "/favicon/site.webmanifest" }],
   },
- openGraph: {
-    images: [
-      {
-        url: "https://intheshoesof.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "In The Shoes Of — Statement Socks",
-      },
-    ],
-  },
   twitter: {
     card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
