@@ -29,7 +29,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "In The Shoes Of — Statement Socks",
-    description: "Limited drops. Small batch. Big voice.",
+    description: "Limited drops. Small batch. Big voice. Celebration.",
     images: ["/opengraph-image.jpg"],
   },
  other: {
