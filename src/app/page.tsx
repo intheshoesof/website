@@ -15,10 +15,9 @@ export default function HomePage() {
             width={280}
             height={280}
             priority
-            unoptimized   // <- bypass optimizer; avoids transient disappearances
+            unoptimized
             style={{ display: "block", margin: "0 auto", maxWidth: "100%", height: "auto", opacity: 0.9 }}
           />
-
         </div>
 
         {/* BRAND TITLE */}
@@ -64,6 +63,24 @@ export default function HomePage() {
             <p className="mt-2 text-gray-600">{desc}</p>
           </article>
         ))}
+      </section>
+
+      {/* SOCIAL LINKS */}
+      <section className="flex justify-center gap-6 pb-8">
+        <Link
+          href="https://www.instagram.com/intheshoesof.world"
+          target="_blank"
+          className="text-gray-700 hover:text-black font-medium"
+        >
+          Instagram
+        </Link>
+        <Link
+          href="https://www.tiktok.com/@intheshoesof.world"
+          target="_blank"
+          className="text-gray-700 hover:text-black font-medium"
+        >
+          TikTok
+        </Link>
       </section>
 
       {/* FOOTER */}
