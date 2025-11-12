@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL("https://intheshoesof.com"),
+  metadataBase: new URL("https://www.intheshoesof.com"),
   title: "In The Shoes Of — Statement Socks",
   description: "Limited drops of bold, conversation-starting socks. Small batch. Big voice.",
   openGraph: {
