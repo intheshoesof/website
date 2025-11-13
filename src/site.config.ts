@@ -46,6 +46,12 @@ export const site = {
       subtitle: "The King who kept Ethiopia free",
       heroImage: "/heroes/haile-selassie/hero.jpg", // fallback to front.png if missing
     },
+    lewisHowardLatimer:{
+      slug: "lewis-howard-latimer",
+      title: "LEWIS HOWARD LATIMER — In The Shoes Of",
+      subtitle: "He brought light — and dignity — to modern life.",
+      heroImage: "/heroes/lewis-howard-latimer/hero.jpg",
+    }
   },
 } as const;
 

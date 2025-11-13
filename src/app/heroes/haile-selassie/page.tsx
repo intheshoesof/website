@@ -65,7 +65,8 @@ export default function HaileSelassieHeroPage() {
             <Image
               src={hero.heroImage || "haile-selassie.jpg"}
               alt="Haile Selassie hero"
-              
+              width={768}
+              height={1024}
               sizes="(max-width:768px)100vw,50vw"
               className="object-contain bg-white"
               
