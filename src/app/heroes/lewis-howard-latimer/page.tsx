@@ -53,7 +53,7 @@ export default function LewisHowardLatimerHeroPage() {
         <div>
           <p className="text-sm text-gray-500 mb-2">Drop #3</p>
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-            {hero.title}
+            {hero.name}
           </h1>
           <p className="mt-3 text-gray-600 text-lg">{hero.subtitle}</p>
 

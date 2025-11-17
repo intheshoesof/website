@@ -14,15 +14,11 @@ type HeroCard = {
 
 // For now we build from your existing product meta.
 // Add more heroes here later.
+
+
 const HEROES: HeroCard[] = [
-  {
-    slug: "haile-selassie",
-    title: "HAILE SELASSIE",
-    subtitle: "The King who kept Ethiopia free",
-    heroImage: "/heroes/haile-selassie/hero.jpg", // fallback handled in <Image>
-    heroHref: site.routes?.haileSelassie  ?? "/haile-selassie",
-    productHref: site.routes?.drop ?? "/drop",
-  },
+  site.heroes.haileSelassie,
+  site.heroes.lewisHowardLatimer,
 ];
 
 export const metadata = {

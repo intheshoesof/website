@@ -33,7 +33,7 @@ export default function HaileSelassieHeroPage() {
       <section className="max-w-6xl mx-auto px-4 md:px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
         <div>
           <p className="text-sm text-gray-500 mb-2">Drop #1</p>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">{hero.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">{hero.name}</h1>
           <p className="mt-3 text-gray-600 text-lg">{hero.subtitle}</p>
 
           <p className="mt-6 text-gray-700">

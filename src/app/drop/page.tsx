@@ -9,6 +9,7 @@ type ProductConfig = {
   slug: string;
   name: string;
   subtitle: string;
+  heroProductImage: string;
   heroImage: string;
   priceEUR?: number;
 };
@@ -73,7 +74,7 @@ export default function DropIndexPage() {
             >
               <div className="relative aspect-[4/5] w-full bg-gray-50">
                 <Image
-                  src={p.heroImage}
+                  src={p.heroProductImage}
                   alt={p.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
