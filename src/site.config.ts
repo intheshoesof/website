@@ -48,6 +48,7 @@ export const site = {
       description:
         "These high-quality socks with sublimated print provide optimum comfort with style wherever one might go — a subtle accent to complement an office look or an eye-catching statement for an extravagant outfit.",
       priceEUR: 14.9,
+      heroImage: "/products/haile-selassie/front.png",
       images: [
         "/products/haile-selassie/front.png",
         "/products/haile-selassie/side-left.png",
@@ -55,14 +56,14 @@ export const site = {
         "/products/haile-selassie/back.png",
       ],
     },
-    lewisHowardlatimer: {
+    lewisHowardLatimer: {
       slug: "lewis-howard-latimer",
       name: "LEWIS HOWARD LATIMER — In The Shoes Of",
       subtitle: "He brought light — and dignity — to modern life",
       description:
         "These high-quality statement socks honour Lewis Howard Latimer — the draftsman, inventor, and engineer whose carbon filament helped bring electric light into everyday life.",
       priceEUR: 14.9,
-
+      heroImage: "/products/lewis-howard-latimer/front.png",
       // 👇 main 'white' set first
       images: [
         "/products/lewis-howard-latimer/front.png",
