@@ -373,11 +373,11 @@ export default function DropPage() {
             {/* Buttons */}
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <button
-                disabled
-                className="bg-black text-white rounded-xl px-6 py-3 font-semibold opacity-60 cursor-not-allowed"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
                 Buy Now (Stripe soon)
               </button>
+
               <a
                 href={waLink}
                 target="_blank"
