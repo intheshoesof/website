@@ -43,16 +43,52 @@ export const site = {
   products: {
     haileSelassie: {
       slug: "haile-selassie",
-      title: "HAILE SELASSIE — In The Shoes Of",
+      name: "HAILE SELASSIE — In The Shoes Of",
       subtitle: "The King who kept Ethiopia free",
-      heroImage: "/heroes/haile-selassie/hero.jpg", // fallback to front.png if missing
+      description:
+        "These high-quality socks with sublimated print provide optimum comfort with style wherever one might go — a subtle accent to complement an office look or an eye-catching statement for an extravagant outfit.",
+      priceEUR: 14.9,
+      images: [
+        "/products/haile-selassie/front.png",
+        "/products/haile-selassie/side-left.png",
+        "/products/haile-selassie/side-right.png",
+        "/products/haile-selassie/back.png",
+      ],
     },
-    lewisHowardLatimer:{
+    lewisHowardlatimer: {
       slug: "lewis-howard-latimer",
-      title: "LEWIS HOWARD LATIMER — In The Shoes Of",
-      subtitle: "He brought light — and dignity — to modern life.",
-      heroImage: "/heroes/lewis-howard-latimer/hero.jpg",
-    }
+      name: "LEWIS HOWARD LATIMER — In The Shoes Of",
+      subtitle: "He brought light — and dignity — to modern life",
+      description:
+        "These high-quality statement socks honour Lewis Howard Latimer — the draftsman, inventor, and engineer whose carbon filament helped bring electric light into everyday life.",
+      priceEUR: 14.9,
+
+      // 👇 main 'white' set first
+      images: [
+        "/products/lewis-howard-latimer/front.png",
+        "/products/lewis-howard-latimer/side-left.png",
+        "/products/lewis-howard-latimer/side-right.png",
+        "/products/lewis-howard-latimer/back.png",
+
+        // 👇 extra variants – red
+        "/products/lewis-howard-latimer/red/front.jpg",
+        "/products/lewis-howard-latimer/red/side-left.jpg",
+        "/products/lewis-howard-latimer/red/side-right.jpg",
+        "/products/lewis-howard-latimer/red/back.jpg",
+
+        // 👇 green
+        "/products/lewis-howard-latimer/green/front.jpg",
+        "/products/lewis-howard-latimer/green/side-left.jpg",
+        "/products/lewis-howard-latimer/green/side-right.jpg",
+        "/products/lewis-howard-latimer/green/back.jpg",
+
+        // 👇 yellow
+        "/products/lewis-howard-latimer/yellow/front.jpg",
+        "/products/lewis-howard-latimer/yellow/side-left.jpg",
+        "/products/lewis-howard-latimer/yellow/side-right.jpg",
+        "/products/lewis-howard-latimer/yellow/back.jpg",
+      ],
+    },
   },
 } as const;
 

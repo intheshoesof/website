@@ -1,4 +1,3 @@
-// File: app/drop/lewis-howard-latimer/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -12,11 +11,33 @@ const PRODUCT = {
   name: "LEWIS HOWARD LATIMER — In The Shoes Of",
   subtitle: "He brought light — and dignity — to modern life",
   priceEUR: 14.9,
+
+  // IMPORTANT: order images by colour (4 per colour):
+  // 0–3  : white
+  // 4–7  : red
+  // 8–11 : green
+  // 12–15: yellow
   images: [
+    // WHITE
     "/products/lewis-howard-latimer/front.png",
     "/products/lewis-howard-latimer/side-left.png",
     "/products/lewis-howard-latimer/side-right.png",
     "/products/lewis-howard-latimer/back.png",
+    // RED
+    "/products/lewis-howard-latimer/red/1.jpg",
+    "/products/lewis-howard-latimer/red/2.jpg",
+    "/products/lewis-howard-latimer/red/3.jpg",
+    "/products/lewis-howard-latimer/red/4.jpg",
+    // GREEN
+    "/products/lewis-howard-latimer/green/1.jpg",
+    "/products/lewis-howard-latimer/green/2.jpg",
+    "/products/lewis-howard-latimer/green/3.jpg",
+    "/products/lewis-howard-latimer/green/4.jpg",
+    // YELLOW
+    "/products/lewis-howard-latimer/yellow/1.jpg",
+    "/products/lewis-howard-latimer/yellow/2.jpg",
+    "/products/lewis-howard-latimer/yellow/3.jpg",
+    "/products/lewis-howard-latimer/yellow/4.jpg",
   ],
   badges: ["Small Batch", "Limited Drop", "Premium Cotton"],
   sizes: [
@@ -34,6 +55,24 @@ const PRODUCT = {
   ],
   composition: "95% polyester, 5% spandex",
 };
+
+// --- Colour selector setup (4 images per colour) ---
+const COLOUR_OPTIONS = [
+  { id: "white", label: "White" },
+  { id: "red", label: "Red" },
+  { id: "green", label: "Green" },
+  { id: "yellow", label: "Yellow" },
+] as const;
+
+type ColourId = (typeof COLOUR_OPTIONS)[number]["id"];
+
+const IMAGES_PER_COLOUR = 4;
+
+function getImagesForColour(colour: ColourId) {
+  const colourIndex = COLOUR_OPTIONS.findIndex((c) => c.id === colour);
+  const start = colourIndex * IMAGES_PER_COLOUR;
+  return PRODUCT.images.slice(start, start + IMAGES_PER_COLOUR);
+}
 
 function formatEUR(n: number) {
   return new Intl.NumberFormat("en-IE", {
@@ -73,9 +112,9 @@ function SizeGuide() {
     <div className="mt-2 border rounded-xl p-4 bg-gray-50/50">
       <div className="flex items-center justify-between">
         <div className="font-medium">Size guide</div>
-        <div className="inline-flex rounded-lg border overflow-hidden">
+        <div className="inline-flex rounded-lg border overflow-hidden text-xs">
           <button
-            className={`px-3 py-1 text-sm ${
+            className={`px-3 py-1 cursor-pointer hover:bg-gray-200 transition-colors ${
               unit === "in" ? "bg-white font-semibold" : "bg-gray-100"
             }`}
             onClick={() => setUnit("in")}
@@ -83,7 +122,7 @@ function SizeGuide() {
             in
           </button>
           <button
-            className={`px-3 py-1 text-sm ${
+            className={`px-3 py-1 cursor-pointer hover:bg-gray-200 transition-colors ${
               unit === "cm" ? "bg-white font-semibold" : "bg-gray-100"
             }`}
             onClick={() => setUnit("cm")}
@@ -135,7 +174,20 @@ function SizeGuide() {
 
 // --- Main Page ---
 export default function DropPage() {
-  const [active, setActive] = useState(0);
+  // gallery
+  const [colour, setColour] = useState<ColourId>("white");
+  const [activeWithinColour, setActiveWithinColour] = useState(0);
+
+  const imagesForColour = useMemo(
+    () => getImagesForColour(colour),
+    [colour]
+  );
+
+  const mainImage =
+    imagesForColour[activeWithinColour] ??
+    "/favicon/web-app-manifest-512x512.png";
+
+  // size / qty
   const [size, setSize] = useState<string | null>(
     PRODUCT.sizes[0]?.code ?? null
   );
@@ -195,12 +247,29 @@ export default function DropPage() {
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Gallery */}
           <section>
+            {/* Colour selector */}
+            <div className="mb-3 flex flex-wrap gap-2">
+              {COLOUR_OPTIONS.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => {
+                    setColour(c.id);
+                    setActiveWithinColour(0);
+                  }}
+                  className={`px-3 py-1 rounded-full text-xs font-medium border cursor-pointer transition-colors ${
+                    colour === c.id
+                      ? "bg-black text-white border-black"
+                      : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+
             <div className="aspect-[4/5] relative w-full overflow-hidden rounded-2xl border">
               <Image
-                src={
-                  PRODUCT.images[active] ??
-                  "/favicon/web-app-manifest-512x512.png"
-                }
+                src={mainImage}
                 alt={PRODUCT.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -211,12 +280,12 @@ export default function DropPage() {
             </div>
 
             <div className="mt-4 grid grid-cols-4 gap-3">
-              {PRODUCT.images.map((src, i) => (
+              {imagesForColour.map((src, i) => (
                 <button
                   key={src}
-                  onClick={() => setActive(i)}
-                  className={`relative aspect-square rounded-xl border overflow-hidden ${
-                    i === active
+                  onClick={() => setActiveWithinColour(i)}
+                  className={`relative aspect-square rounded-xl border overflow-hidden cursor-pointer ${
+                    i === activeWithinColour
                       ? "ring-2 ring-black"
                       : "hover:border-gray-400"
                   }`}
@@ -260,7 +329,7 @@ export default function DropPage() {
                 <label className="block text-sm font-medium">Size</label>
                 <div className="inline-flex rounded-lg border overflow-hidden text-xs">
                   <button
-                    className={`px-3 py-1 ${
+                    className={`px-3 py-1 cursor-pointer hover:bg-gray-200 transition-colors ${
                       region === "US"
                         ? "bg-white font-semibold"
                         : "bg-gray-100"
@@ -270,7 +339,7 @@ export default function DropPage() {
                     US
                   </button>
                   <button
-                    className={`px-3 py-1 ${
+                    className={`px-3 py-1 cursor-pointer hover:bg-gray-200 transition-colors ${
                       region === "EU"
                         ? "bg-white font-semibold"
                         : "bg-gray-100"
@@ -287,7 +356,7 @@ export default function DropPage() {
                   <button
                     key={s.code}
                     onClick={() => setSize(s.code)}
-                    className={`rounded-xl border px-3 py-3 text-sm text-left hover:shadow-sm ${
+                    className={`rounded-xl border px-3 py-3 text-sm text-left hover:shadow-sm cursor-pointer ${
                       size === s.code ? "border-black" : "border-gray-300"
                     }`}
                   >
@@ -353,25 +422,31 @@ export default function DropPage() {
               <SizeGuide />
             </div>
 
-            {/* Trust */}
+            {/* Trust badges (secure payment highlighted) */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-              {["Secure Payment", "Quick Support", "Small-Batch Quality"].map(
-                (t) => (
-                  <div
-                    key={t}
-                    className="rounded-xl border p-4 text-center text-gray-700"
-                  >
-                    {t}
-                  </div>
-                )
-              )}
+              <div className="rounded-xl border border-blue-500 bg-blue-50 text-blue-900 p-4">
+                <div className="font-semibold">Secure payment</div>
+                <p className="mt-1 text-xs md:text-sm">
+                  Card details encrypted and processed via Stripe once enabled.
+                </p>
+              </div>
+              <div className="rounded-xl border p-4 text-gray-700 bg-white">
+                <div className="font-semibold">Quick support</div>
+                <p className="mt-1 text-xs md:text-sm">
+                  Message us on WhatsApp for sizing, delivery, or order help.
+                </p>
+              </div>
+              <div className="rounded-xl border p-4 text-gray-700 bg-white">
+                <div className="font-semibold">Limited small-batch run</div>
+                <p className="mt-1 text-xs md:text-sm">
+                  Produced in small batches. Once a drop sells out, it is not
+                  restocked.
+                </p>
+              </div>
             </div>
 
             <div className="mt-8">
-              <Link
-                href="/"
-                className="text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/" className="text-gray-600 hover:text-gray-900">
                 ← Back to home
               </Link>
             </div>

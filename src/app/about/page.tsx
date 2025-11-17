@@ -63,7 +63,7 @@ export default function AboutPage() {
             <div key={c} className="rounded-2xl border p-6 text-center">
               <div className="text-sm font-semibold uppercase">{c}</div>
               <div className="mt-3 relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-white">
-                <Image src={`/products/sample/${c}.png`} alt={`${c} sock`} fill className="object-contain" />
+                <Image src={`/products/sample/${c}.jpg`} alt={`${c} sock`} fill className="object-contain" />
               </div>
             </div>
           ))}
