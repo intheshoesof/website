@@ -3,60 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { site } from "@/site.config";
+import { site, waHref } from "@/site.config";
 
-// --- Product info (Printify specs) ---
-const PRODUCT = {
-  slug: "lewis-howard-latimer",
-  name: "LEWIS HOWARD LATIMER — In The Shoes Of",
-  subtitle: "He brought light — and dignity — to modern life",
-  priceEUR: 14.9,
+// Single source of truth: product comes from site.config
+const PRODUCT = site.products.lewisHowardLatimer;
 
-  // IMPORTANT: order images by colour (4 per colour):
-  // 0–3  : white
-  // 4–7  : red
-  // 8–11 : green
-  // 12–15: yellow
-  images: [
-    // WHITE
-    "/products/lewis-howard-latimer/front.png",
-    "/products/lewis-howard-latimer/side-left.png",
-    "/products/lewis-howard-latimer/side-right.png",
-    "/products/lewis-howard-latimer/back.png",
-    // RED
-    "/products/lewis-howard-latimer/red/1.jpg",
-    "/products/lewis-howard-latimer/red/2.jpg",
-    "/products/lewis-howard-latimer/red/3.jpg",
-    "/products/lewis-howard-latimer/red/4.jpg",
-    // GREEN
-    "/products/lewis-howard-latimer/green/1.jpg",
-    "/products/lewis-howard-latimer/green/2.jpg",
-    "/products/lewis-howard-latimer/green/3.jpg",
-    "/products/lewis-howard-latimer/green/4.jpg",
-    // YELLOW
-    "/products/lewis-howard-latimer/yellow/1.jpg",
-    "/products/lewis-howard-latimer/yellow/2.jpg",
-    "/products/lewis-howard-latimer/yellow/3.jpg",
-    "/products/lewis-howard-latimer/yellow/4.jpg",
-  ],
-  badges: ["Small Batch", "Limited Drop", "Premium Cotton"],
-  sizes: [
-    { code: "S", hint: { US: "Women 6–8 · Men 5–6.5", EU: "EU 36–39" } },
-    { code: "M", hint: { US: "Women 8.5–11 · Men 7–9.5", EU: "EU 40–44" } },
-    { code: "L", hint: { US: "Women 11.5–13 · Men 10–13", EU: "EU 45–48" } },
-  ],
-  description:
-    "These high-quality statement socks honour Lewis Howard Latimer — the draftsman, inventor, and engineer whose carbon filament helped bring electric light into everyday life.",
-  care: [
-    "Machine wash cold",
-    "Do not bleach",
-    "Tumble dry low",
-    "Note: Dark color prints can make side seams more noticeable",
-  ],
-  composition: "95% polyester, 5% spandex",
-};
+// --- Generic sock config (shared across heroes) ---
+const BADGES = ["Small Batch", "Limited Drop", "Premium Cotton"] as const;
 
-// --- Colour selector setup (4 images per colour) ---
+const SIZES = [
+  { code: "S", hint: { US: "Women 6–8 · Men 5–6.5", EU: "EU 36–39" } },
+  { code: "M", hint: { US: "Women 8.5–11 · Men 7–9.5", EU: "EU 40–44" } },
+  { code: "L", hint: { US: "Women 11.5–13 · Men 10–13", EU: "EU 45–48" } },
+] as const;
+
+const CARE = [
+  "Machine wash cold",
+  "Do not bleach",
+  "Tumble dry low",
+  "Note: Dark color prints can make side seams more noticeable",
+];
+
+const COMPOSITION = "95% polyester, 5% spandex";
+
+// --- Colour selector setup (4 images per colour — order enforced in site.config) ---
 const COLOUR_OPTIONS = [
   { id: "white", label: "White" },
   { id: "red", label: "Red" },
@@ -185,24 +155,24 @@ export default function DropPage() {
 
   const mainImage =
     imagesForColour[activeWithinColour] ??
+    PRODUCT.heroImage ??
     "/favicon/web-app-manifest-512x512.png";
 
   // size / qty
-  const [size, setSize] = useState<string | null>(
-    PRODUCT.sizes[0]?.code ?? null
-  );
+  const [size, setSize] = useState<string | null>(SIZES[0]?.code ?? null);
   const [qty, setQty] = useState(1);
   const [region, setRegion] = useState<"US" | "EU">("US");
 
   const priceText = useMemo(() => formatEUR(PRODUCT.priceEUR), []);
-  const waHref = useMemo(() => {
-    const msg = `Hi! I'd like to order ${qty} × ${PRODUCT.name} (${
-      size ?? "no size selected"
-    }).`;
-    return `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(
-      msg
-    )}`;
-  }, [qty, size]);
+  const waLink = useMemo(
+    () =>
+      waHref(
+        `Hi! I'd like to order ${qty} × ${PRODUCT.name} (${
+          size ?? "no size selected"
+        }).`
+      ),
+    [qty, size]
+  );
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
@@ -210,21 +180,27 @@ export default function DropPage() {
       <header className="border-b bg-white/70 backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-4 md:px-6 py-4">
           <Link
-            href="/"
+            href={site.routes.home}
             className="flex items-center gap-2 font-extrabold text-lg tracking-tight"
           >
             <Image src="/logo.png" alt="logo" width={40} height={40} />
-            <span>In The Shoes Of</span>
+            <span>{site.brand}</span>
           </Link>
           <nav className="flex gap-6 text-sm font-medium">
-            <Link href="/" className="hover:text-gray-900 text-gray-600">
+            <Link
+              href={site.routes.home}
+              className="hover:text-gray-900 text-gray-600"
+            >
               Home
             </Link>
-            <Link href="/drop" className="text-black font-semibold">
+            <Link
+              href={site.routes.drop}
+              className="text-black font-semibold"
+            >
               Drop
             </Link>
             <a
-              href={`https://wa.me/${site.contact.whatsapp}`}
+              href={waHref()}
               target="_blank"
               className="hover:text-gray-900 text-gray-600"
             >
@@ -237,7 +213,10 @@ export default function DropPage() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="text-sm mb-6">
-          <Link href="/" className="text-gray-600 hover:text-gray-900">
+          <Link
+            href={site.routes.home}
+            className="text-gray-600 hover:text-gray-900"
+          >
             Home
           </Link>
           <span className="mx-2 text-gray-400">/</span>
@@ -312,7 +291,7 @@ export default function DropPage() {
             <div className="mt-4 flex items-center gap-3">
               <div className="text-2xl font-semibold">{priceText}</div>
               <div className="flex gap-2">
-                {PRODUCT.badges.map((b) => (
+                {BADGES.map((b) => (
                   <span
                     key={b}
                     className="text-xs border rounded-full px-2 py-1 text-gray-700"
@@ -352,7 +331,7 @@ export default function DropPage() {
               </div>
 
               <div className="mt-2 grid grid-cols-3 gap-2">
-                {PRODUCT.sizes.map((s) => (
+                {SIZES.map((s) => (
                   <button
                     key={s.code}
                     onClick={() => setSize(s.code)}
@@ -400,7 +379,7 @@ export default function DropPage() {
                 Buy Now (Stripe soon)
               </button>
               <a
-                href={waHref}
+                href={waLink}
                 target="_blank"
                 className="border border-gray-300 rounded-xl px-6 py-3 font-semibold text-center hover:bg-gray-50"
               >
@@ -413,16 +392,16 @@ export default function DropPage() {
               <p>{PRODUCT.description}</p>
               <p>
                 <span className="font-medium">Composition:</span>{" "}
-                {PRODUCT.composition}
+                {COMPOSITION}
               </p>
               <p>
                 <span className="font-medium">Care:</span>{" "}
-                {PRODUCT.care.join(" • ")}
+                {CARE.join(" • ")}
               </p>
               <SizeGuide />
             </div>
 
-            {/* Trust badges (secure payment highlighted) */}
+            {/* Trust badges */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
               <div className="rounded-xl border border-blue-500 bg-blue-50 text-blue-900 p-4">
                 <div className="font-semibold">Secure payment</div>
@@ -446,7 +425,10 @@ export default function DropPage() {
             </div>
 
             <div className="mt-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">
+              <Link
+                href={site.routes.home}
+                className="text-gray-600 hover:text-gray-900"
+              >
                 ← Back to home
               </Link>
             </div>
