@@ -85,7 +85,7 @@ export default function HomePage() {
         <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Four Colours. One Truth.</h2>
         <p className="mt-3 text-gray-700">
           Our signature palette represents the values carried by our heroes: <b>White</b> for truth, <b>Yellow</b> for light,
-          <b> Green</b> for growth, <b>Red</b> for courage.
+          <b> Green</b> for growth, <b>Red</b> for courage.xx
         </p>
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {["white", "yellow", "green", "red"].map((c) => (
