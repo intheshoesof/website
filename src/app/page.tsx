@@ -93,7 +93,7 @@ export default function HomePage() {
               <div className="text-sm font-semibold uppercase">{c}</div>
               <div className="mt-3 relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-white">
                 <Image
-                  src={`/products/sample/${c}.jpg `}
+                  src={`/products/sample/${c}.jpg`}
                   alt={`${c} sock`}
                   fill
                   className="object-contain"
